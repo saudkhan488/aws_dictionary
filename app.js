@@ -47,7 +47,7 @@ function handleError (error = {}) {
     // Using duck typing to know if we explicitly threw this error
     // If not then wrapping original error into UnexpectedError
     if (!error.requestType) { error = new errors.UnexpectedError({ original_error: error }); }
-
+    console.log(word);
     const { requestType, title, message, resolution } = error;
         status = REQUEST_TYPE_STATUS_CODE[requestType],
         body = JSON.stringify({
@@ -65,7 +65,7 @@ function handleError (error = {}) {
 app.set('trust proxy', true);
 
 app.use(limiter);
-console.log(word);
+
 app.get('/api/:version/entries/:language/:word', async (req, res) => {
     let { word, language, version } = req.params,
         include = _.reduce(_.get(req.query, 'include', '').split(','), (accumulator, current) => {
