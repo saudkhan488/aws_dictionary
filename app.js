@@ -47,7 +47,7 @@ function handleError (error = {}) {
     // Using duck typing to know if we explicitly threw this error
     // If not then wrapping original error into UnexpectedError
     if (!error.requestType) { error = new errors.UnexpectedError({ original_error: error }); }
-    console.log('%i', 4000)
+    
 
     const { requestType, title, message, resolution } = error;
         status = REQUEST_TYPE_STATUS_CODE[requestType],
@@ -74,7 +74,7 @@ app.get('/api/:version/entries/:language/:word', async (req, res) => {
 
             return accumulator;
         }, {});
-
+        console.log('%s', word);
     word = decodeURIComponent(word);
     
     if (!word || !language || !version) {
