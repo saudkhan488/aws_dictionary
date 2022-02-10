@@ -77,9 +77,9 @@ app.get('/api/:version/entries/:language/:word', async (req, res) => {
         console.log('%s', word);
     word = decodeURIComponent(word);
     
-    if (!word || !language || !version) {
-        return handleError.call(res, new errors.NoDefinitionsFound()); 
-    }
+    // if (!word || !language || !version) {
+    //     return handleError.call(res, new errors.NoDefinitionsFound()); 
+    // }
 
     // @todo: Find better error.
     if (!utils.isVersionSupported(version)) { return handleError.call(res, new errors.NoDefinitionsFound()); }
