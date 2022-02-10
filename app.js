@@ -112,7 +112,7 @@ app.get('/api/:version/entries/:language/:word', async (req, res) => {
 
         res.set(HEADER_CONTENT_TYPE, 'application/json');
         res.set(HEADER_ACCESS_CONTROL_ALLOW_ORIGIN, '*');
-
+        console.log(status);
         return res.status(status).send(body);
     } catch (error) {
         return handleError.call(res, error);
