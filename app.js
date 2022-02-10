@@ -65,7 +65,7 @@ function handleError (error = {}) {
 app.set('trust proxy', true);
 
 app.use(limiter);
-
+console.log(word);
 app.get('/api/:version/entries/:language/:word', async (req, res) => {
     let { word, language, version } = req.params,
         include = _.reduce(_.get(req.query, 'include', '').split(','), (accumulator, current) => {
@@ -75,7 +75,7 @@ app.get('/api/:version/entries/:language/:word', async (req, res) => {
         }, {});
 
     word = decodeURIComponent(word);
-    console.log(word);
+    
     if (!word || !language || !version) {
         return handleError.call(res, new errors.NoDefinitionsFound()); 
     }
