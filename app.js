@@ -82,7 +82,7 @@ app.get('/api/:version/entries/:language/:word', async (req, res) => {
     }
 
     // @todo: Find better error.
-    // if (!utils.isVersionSupported(version)) { return handleError.call(res, new errors.NoDefinitionsFound()); }
+    if (!utils.isVersionSupported(version)) { return handleError.call(res, new errors.NoDefinitionsFound()); }
 
     // Todo: Figure out better strategy.
     if (language === 'en_US' || language === 'en_GB') { language = 'en'; }
